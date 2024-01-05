@@ -7,19 +7,23 @@ import model.Student;
 
 public class Client {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) { 
+
     Scanner sc = new Scanner(System.in);
     StudentDaoInterface dao = new StudentDao();
+
     System.out.println("Welcome to Student Management Application");
+
     while (true) {
       System.out.println(
         "\n1.Add Student" +
         "\n2.Show All Students+" +
-        "\n3.Get student based on roll number+" +
+        "\n3.Get student based on roll number" +
         "\n4.Delete Student" +
         "\n5.Update Student" +
         "\n6.Exit"
       );
+
       System.out.println("Enter choice");
 
       int ch = sc.nextInt();
@@ -48,6 +52,12 @@ public class Client {
           break;
         case 3:
           System.out.println("Get students based on roll number");
+          boolean ans1=dao.showStudentByID(sc.nextInt());
+          if (ans1) {
+            System.out.println("Record found Successfully!!!");
+          } else {
+            System.out.println("something went wrong, please try again");
+          }
           break;
         case 4:
           System.out.println("Delete Student");

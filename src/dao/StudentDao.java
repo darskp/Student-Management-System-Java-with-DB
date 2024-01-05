@@ -67,7 +67,36 @@ public class StudentDao implements StudentDaoInterface {
 
   @Override
   public boolean showStudentByID(int roll) {
-    return false;
+boolean flag=false;
+    try{
+    Connection con = DBconnection.createConnection();
+    Statement stmt = con.createStatement();
+    ResultSet rs = stmt.executeQuery("select * from students where rollnum="+roll);
+    flag=true;
+       while (rs.next()) {
+        System.out.println(
+          "Rollnumber : " +
+          rs.getInt(1) +
+          "\n" +
+          "Name : " +
+          rs.getString(2) +
+          "\n" +
+          "College Name : " +
+          rs.getString(3) +
+          "\n" +
+          "City : " +
+          rs.getString(4) +
+          "\n" +
+          "Percentage : " +
+          rs.getDouble(5) +
+          "\n"
+        );
+        System.out.println("------------------");
+      }
+    }catch(Exception e){
+    e.printStackTrace();
+    }
+    return flag;
   }
 
   @Override
