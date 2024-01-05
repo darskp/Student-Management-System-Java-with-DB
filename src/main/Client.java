@@ -1,11 +1,15 @@
 package main;
 
+import dao.StudentDao;
+import dao.StudentDaoInterface;
 import java.util.Scanner;
+import model.Student;
 
 public class Client {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
+    StudentDaoInterface dao = new StudentDao();
     System.out.println("Welcome to Student Management Application");
     while (true) {
       System.out.println(
@@ -22,6 +26,22 @@ public class Client {
       switch (ch) {
         case 1:
           System.out.println("Add Student");
+          System.out.println("Add Student");
+          System.out.println("Enter student name");
+          String name = sc.next();
+          System.out.println("Enter student clg name");
+          String clgName = sc.next();
+          System.out.println("Enter city");
+          String city = sc.next();
+          System.out.println("Enter Percentage");
+          double percentage = sc.nextDouble();
+          Student st = new Student(name, clgName, city, percentage);
+          boolean ans = dao.insertStudent(st);
+          if (ans) {
+            System.out.println("Record inserted Successfully!!!");
+          } else {
+            System.out.println("something went wrong, please try again");
+          }
           break;
         case 2:
           System.out.println("Show All Students");
