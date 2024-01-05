@@ -7,8 +7,7 @@ import model.Student;
 
 public class Client {
 
-  public static void main(String[] args) { 
-
+  public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     StudentDaoInterface dao = new StudentDao();
 
@@ -52,15 +51,24 @@ public class Client {
           break;
         case 3:
           System.out.println("Get students based on roll number");
-          boolean ans1=dao.showStudentByID(sc.nextInt());
-          if (ans1) {
+          System.out.println("Enter te roll Number");
+          boolean an = dao.showStudentByID(sc.nextInt());
+          if (an) {
             System.out.println("Record found Successfully!!!");
           } else {
-            System.out.println("something went wrong, please try again");
+            System.out.println("Student with this id is not available");
           }
           break;
         case 4:
           System.out.println("Delete Student");
+          System.out.println("enter roll number to delete");
+          int rollnum = sc.nextInt();
+          boolean res = dao.delete(rollnum);
+          if (res) {
+            System.out.println("Record deleted successfully...");
+          } else {
+            System.out.println("Something went wrong");
+          }
           break;
         case 5:
           System.out.println("Update the student");

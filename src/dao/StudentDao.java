@@ -11,7 +11,17 @@ public class StudentDao implements StudentDaoInterface {
 
   @Override
   public boolean delete(int roll) {
-    return false;
+    boolean flag = false;
+    try {
+      Connection con = DBconnection.createConnection();
+      String query = "DELETE from students where rollnum=" + roll;
+      PreparedStatement pst = con.prepareStatement(query);
+      flag=true;
+      pst.executeUpdate();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    return flag;
   }
 
   @Override
@@ -67,13 +77,15 @@ public class StudentDao implements StudentDaoInterface {
 
   @Override
   public boolean showStudentByID(int roll) {
-boolean flag=false;
-    try{
-    Connection con = DBconnection.createConnection();
-    Statement stmt = con.createStatement();
-    ResultSet rs = stmt.executeQuery("select * from students where rollnum="+roll);
-    flag=true;
-       while (rs.next()) {
+    boolean flag = false;
+    try {
+      Connection con = DBconnection.createConnection();
+      Statement stmt = con.createStatement();
+      ResultSet rs = stmt.executeQuery(
+        "select * from students where rollnum=" + roll
+      );
+      flag = true;
+      while (rs.next()) {
         System.out.println(
           "Rollnumber : " +
           rs.getInt(1) +
@@ -93,8 +105,8 @@ boolean flag=false;
         );
         System.out.println("------------------");
       }
-    }catch(Exception e){
-    e.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
     return flag;
   }
