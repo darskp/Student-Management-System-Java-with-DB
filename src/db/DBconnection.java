@@ -11,7 +11,7 @@ public class DBconnection {
     try {
       Class.forName("com.mysql.cj.jdbc.Driver");
       con=DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studentdb?autoReconnect=true&useSSL=false",
+        "jdbc:mysql://localhost:3306/student?autoReconnect=true&useSSL=false",
         "root",
         "Admin@123#"
       );

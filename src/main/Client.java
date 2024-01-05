@@ -26,7 +26,6 @@ public class Client {
       switch (ch) {
         case 1:
           System.out.println("Add Student");
-          System.out.println("Add Student");
           System.out.println("Enter student name");
           String name = sc.next();
           System.out.println("Enter student clg name");
@@ -45,6 +44,7 @@ public class Client {
           break;
         case 2:
           System.out.println("Show All Students");
+          dao.showAllStudent();
           break;
         case 3:
           System.out.println("Get students based on roll number");
