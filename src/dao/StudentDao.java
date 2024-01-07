@@ -16,8 +16,10 @@ public class StudentDao implements StudentDaoInterface {
       Connection con = DBconnection.createConnection();
       String query = "DELETE from students where rollnum=" + roll;
       PreparedStatement pst = con.prepareStatement(query);
-      flag=true;
-      pst.executeUpdate();
+      int rowAffected = pst.executeUpdate();
+      if (rowAffected > 0) {
+        flag = true;
+      }
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -28,7 +30,6 @@ public class StudentDao implements StudentDaoInterface {
   public boolean insertStudent(Student s) {
     boolean flag = false;
     try {
-      flag = true;
       String myQuery =
         "insert into Students(sname,clgname,city,percentage) value(?,?,?,?)";
       Connection con = DBconnection.createConnection();
@@ -37,7 +38,10 @@ public class StudentDao implements StudentDaoInterface {
       pst.setString(2, s.getClgname());
       pst.setString(3, s.getCity());
       pst.setDouble(4, s.getPercentage());
-      pst.executeUpdate();
+      int rowAffected = pst.executeUpdate();
+      if (rowAffected > 0) {
+        flag = true;
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -76,6 +80,24 @@ public class StudentDao implements StudentDaoInterface {
   }
 
   @Override
+  public boolean checkStudentRollno(int roll) {
+    boolean flag = false;
+    try {
+      Connection con = DBconnection.createConnection();
+      Statement stmt = con.createStatement();
+      ResultSet rs = stmt.executeQuery(
+        "select * from students where rollnum=" + roll
+      );
+      if (rs.next()) {
+        flag = true;
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return flag;
+  }
+
+  @Override
   public boolean showStudentByID(int roll) {
     boolean flag = false;
     try {
@@ -84,8 +106,8 @@ public class StudentDao implements StudentDaoInterface {
       ResultSet rs = stmt.executeQuery(
         "select * from students where rollnum=" + roll
       );
-      flag = true;
       while (rs.next()) {
+        flag = true;
         System.out.println(
           "Rollnumber : " +
           rs.getInt(1) +
@@ -113,6 +135,37 @@ public class StudentDao implements StudentDaoInterface {
 
   @Override
   public boolean update(int roll, String update, int ch, Student S) {
-    return false;
+    int choice = ch;
+    boolean flag = false;
+
+    try {
+      if (choice == 1) {
+        Connection con = DBconnection.createConnection();
+        String query = "Update students set sname=? where rollnum=?";
+        PreparedStatement ps = con.prepareStatement(query);
+        ps.setString(1, update);
+        ps.setInt(2, roll);
+        int rowAffected = ps.executeUpdate();
+        if (rowAffected > 0) {
+          flag = true;
+        }
+      } else if (choice == 2) {
+        flag = true;
+        Connection con = DBconnection.createConnection();
+        PreparedStatement ps = con.prepareStatement(
+          "update students set sname=? where rollnum=?"
+        );
+        ps.setString(1, update);
+        ps.setInt(2, roll);
+        int rowAffected = ps.executeUpdate();
+        if (rowAffected > 0) {
+          flag = true;
+        }
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
+    return flag;
   }
 }

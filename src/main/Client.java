@@ -51,9 +51,9 @@ public class Client {
           break;
         case 3:
           System.out.println("Get students based on roll number");
-          System.out.println("Enter te roll Number");
+          System.out.println("Enter the roll Number");
           boolean an = dao.showStudentByID(sc.nextInt());
-          if (an) {
+          if (an == true) {
             System.out.println("Record found Successfully!!!");
           } else {
             System.out.println("Student with this id is not available");
@@ -63,15 +63,59 @@ public class Client {
           System.out.println("Delete Student");
           System.out.println("enter roll number to delete");
           int rollnum = sc.nextInt();
-          boolean res = dao.delete(rollnum);
-          if (res) {
-            System.out.println("Record deleted successfully...");
+          boolean checkRNoStat = dao.checkStudentRollno(rollnum);
+          if (checkRNoStat) {
+            boolean res = dao.delete(rollnum);
+            if (res) {
+              System.out.println("Record deleted successfully...");
+            } else {
+              System.out.println("Something went wrong");
+            }
           } else {
-            System.out.println("Something went wrong");
+            System.out.println("Entered Roll Number is not exist");
           }
           break;
         case 5:
           System.out.println("Update the student");
+          System.out.println();
+          System.out.println("1.Update Name\n2.Update College Name");
+          System.out.println();
+          System.out.println("Enter Your Choice ");
+          int choice = sc.nextInt();
+          if (choice == 1 || choice == 2) {
+            System.out.println("Enter Roll Number ");
+            int rnu = sc.nextInt();
+            boolean checkRNoStatus = dao.checkStudentRollno(rnu);
+            if (checkRNoStatus) {
+              if (choice == 1) {
+                System.out.println("Enter new name ");
+                String sname = sc.next();
+                Student std = new Student();
+                std.setName(sname);
+                boolean flag = dao.update(rnu, sname, choice, std);
+                if (flag) {
+                  System.out.println("Name Updated Successfully");
+                } else {
+                  System.out.println("Something went wrong....!");
+                }
+              } else if (choice == 2) {
+                System.out.println("Enter New College name ");
+                String collegeName = sc.next();
+                Student std = new Student();
+                std.setClgname(collegeName);
+                boolean flag = dao.update(rnu, collegeName, choice, std);
+                if (flag) {
+                  System.out.println("College Name Updated Successfully");
+                } else {
+                  System.out.println("Something went wrong....!");
+                }
+              }
+            } else {
+              System.out.println("Entered Roll Number is not exist");
+            }
+          } else {
+            System.out.println("Invalid Choice");
+          }
           break;
         case 6:
           System.out.println("Thank you!");

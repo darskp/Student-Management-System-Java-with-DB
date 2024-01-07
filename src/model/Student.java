@@ -8,6 +8,11 @@ public class Student {
   private String city;
   private double percentage;
 
+//default
+  public Student(){
+  
+  }
+
   @Override
   public String toString() {
     return (

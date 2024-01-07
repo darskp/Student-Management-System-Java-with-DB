@@ -8,4 +8,5 @@ public interface StudentDaoInterface {
     public boolean update(int roll,String update,int ch,Student S);
     public void showAllStudent();
     public boolean showStudentByID(int roll);
+    public boolean checkStudentRollno(int roll);
 }
