@@ -7,20 +7,25 @@ import model.Student;
 
 public class Client {
 
+  public static final String RED = "\u001B[31m";
+  public static final String RESET = "\u001B[0m";
+  public static final String GREEN = "\u001B[32m";
+    public static final String CYAN="\u001B[36m";
+
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     StudentDaoInterface dao = new StudentDao();
 
-    System.out.println("Welcome to Student Management Application");
+    System.out.println(RED+"Welcome to Student Management Application"+RESET);
 
     while (true) {
-      System.out.println(
+      System.out.println(GREEN+
         "\n1.Add Student" +
         "\n2.Show All Students+" +
         "\n3.Get student based on roll number" +
         "\n4.Delete Student" +
         "\n5.Update Student" +
-        "\n6.Exit"
+        "\n6.Exit"+RESET
       );
 
       System.out.println("Enter choice");
