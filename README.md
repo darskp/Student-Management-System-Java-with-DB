@@ -1,18 +1,31 @@
-## Getting Started
+# Student Management System with MySQL Database
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+[Demo Video](https://drive.google.com/file/d/1AsjREp-7_PCYlWFJ6o33vq5WLFtHUhaE/view?usp=sharing)
 
-## Folder Structure
+![Student Management System](https://raw.githubusercontent.com/darskp/Student-Management-System-Java-with-DB/c09042ee26ba7a0c3e40b6972dab99edf21c23be/Student-Management-System-Java-with-DB.PNG)
 
-The workspace contains two folders by default, where:
+This is a Student Management System written in Java with MySQL database connectivity.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Concepts Used](#concepts-used-in-this-project)
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Overview
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+This project implements a Student Management System that allows users to perform basic CRUD (Create, Read, Update, Delete) operations on student records. The system is integrated with a MySQL database to store and retrieve student information.
 
-## Dependency Management
+## Features
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- **Add Student:** Add a new student to the database with details such as roll number, name, age, course, and grade.
+- **Show All Students:** Display details of all students currently stored in the database.
+- **Get Student Based on Roll Number:** Retrieve information for a specific student by entering their roll number.
+- **Delete Student:** Delete a student record from the database based on their roll number.
+- **Update Student:** Update information for an existing student, including name, age, course, and grade
+- **Exit:** Terminate the application.
+
+## Concepts Used in This Project
+- Encapsulation
+- Abstraction
+- Database Connectivity with JDBC
+- CRUD Operations with MySQL
