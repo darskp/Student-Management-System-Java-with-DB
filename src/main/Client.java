@@ -17,7 +17,6 @@ public class Client {
     StudentDaoInterface dao = new StudentDao();
 
     System.out.println(RED+"Welcome to Student Management Application"+RESET);
-
     while (true) {
       System.out.println(GREEN+
         "\n1.Add Student" +
@@ -131,6 +130,7 @@ public class Client {
 
           break;
       }
+      
     }
   }
 }

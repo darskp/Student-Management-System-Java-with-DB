@@ -20,6 +20,9 @@ public class StudentDao implements StudentDaoInterface {
       if (rowAffected > 0) {
         flag = true;
       }
+      pst.close();
+      con.close();
+
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -42,6 +45,8 @@ public class StudentDao implements StudentDaoInterface {
       if (rowAffected > 0) {
         flag = true;
       }
+      pst.close();
+      con.close();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -74,6 +79,10 @@ public class StudentDao implements StudentDaoInterface {
         );
         System.out.println("------------------");
       }
+      rs.close();
+      stmt.close();
+      con.close();
+
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -91,6 +100,9 @@ public class StudentDao implements StudentDaoInterface {
       if (rs.next()) {
         flag = true;
       }
+      rs.close();
+      stmt.close();
+      con.close();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -127,6 +139,9 @@ public class StudentDao implements StudentDaoInterface {
         );
         System.out.println("------------------");
       }
+      rs.close();
+      stmt.close();
+      con.close();
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -161,6 +176,8 @@ public class StudentDao implements StudentDaoInterface {
         if (rowAffected > 0) {
           flag = true;
         }
+        ps.close();
+        con.close();
       }
     } catch (Exception e) {
       e.printStackTrace();
