@@ -17,11 +17,11 @@ This project implements a Student Management System that allows users to perform
 
 ## Features
 
-- **Add Student:** Add a new student to the database with details such as roll number, name, age, course, and grade.
+- **Add Student:** Add a new student to the database with details such as roll number, name, college name, city, percentage.
 - **Show All Students:** Display details of all students currently stored in the database.
 - **Get Student Based on Roll Number:** Retrieve information for a specific student by entering their roll number.
 - **Delete Student:** Delete a student record from the database based on their roll number.
-- **Update Student:** Update information for an existing student, including name, age, course, and grade
+- **Update Student:** Update information for an existing student, including name and college name.
 - **Exit:** Terminate the application.
 
 ## Concepts Used in This Project
